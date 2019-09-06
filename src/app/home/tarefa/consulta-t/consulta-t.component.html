@@ -1,0 +1,36 @@
+<h3>{{titulo}}</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Nome</th>
+            <th>Data Inicio</th>
+            <th>Data Termino</th>
+            <th>Concluido</th>
+            <th>Excluir</th>
+            <th>Editar</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        <tr *ngFor="let tarefa of tarefas; let i = index;">
+            <td>{{ tarefa.codigo }}</td>
+            <td>{{ tarefa.nome }}</td>
+            <td>{{ tarefa.dtInicio | date:'dd/MM/yyyy' }}</td>
+            <td>{{ tarefa.dtTermino | date:'dd/MM/yyyy' }}</td>
+            <td *ngIf='tarefa.concluido'>Sim</td>
+            <td *ngIf='!tarefa.concluido'>Não</td>
+            <td><a (click)="editar(tarefa.codigo);">Editar</a></td>
+            <td><a (click)="excluir(tarefa.codigo, i);">Excluir</a></td>  
+            
+        </tr>
+        <tr>
+            <td colspan="6" style="text-align: right;">Total de Registros: {{ tarefas.length }}</td>
+        </tr>
+    </tbody>
+    <br><br>
+
+</table>
+

@@ -6,11 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ConfigService } from './services/config.service';
 import { PessoaService } from './services/pessoa.service';
+import { TarefaService } from './services/tarefa.service';
 import { HomeComponent } from './home/home.component';
 import { CadastroComponent } from './home/pessoa/cadastro/cadastro.component';
 import { ConsultaComponent } from './home/pessoa/consulta/consulta.component';
+import { CadastroComponentT } from './home/tarefa/cadastro/cadastro.component';
 import { MenuComponent } from './menu/menu.component';
 import { FormsModule } from '@angular/forms';
+import { ConsultaTComponent } from './home/tarefa/consulta-t/consulta-t.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,9 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     CadastroComponent,
     ConsultaComponent,
-    MenuComponent
+    MenuComponent,
+    CadastroComponentT,
+    ConsultaTComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +31,7 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     FormsModule
   ],
-  providers: [ConfigService, PessoaService],
+  providers: [ConfigService, PessoaService, TarefaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

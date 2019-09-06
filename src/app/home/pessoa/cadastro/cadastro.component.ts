@@ -36,7 +36,7 @@ export class CadastroComponent implements OnInit {
 
   salvar() {
     if (this.pessoa.codigo === undefined) {
-      this.pessoaService.addPessoa(this.pessoa)
+      this.pessoaService.addPessoa( this.pessoa)
       .subscribe(response => {
         this.pessoa = response;
         const res: Response = <Response>response;

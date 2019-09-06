@@ -1,0 +1,44 @@
+<form (ngSubmit)="salvar()">
+
+    <br>
+    <h3>{{ titulo }}</h3>
+    
+    <label>Codigo: 
+        <input type="text" name="codigo" size="10" [(ngModel)]="tarefa.codigo" disabled>
+    </label><br><br>
+    
+    <label>Nome: 
+        <input type="text" name="nome" size="30" [(ngModel)]="tarefa.nome" >
+    </label><br><br>
+
+    <label>Descrição: 
+        <input type="text" name="descricao" size="30" [(ngModel)]="tarefa.descricao" >
+    </label><br><br>
+
+    <label>Data Inicio: 
+        <input type="date" name="dataInicio" size="30" [(ngModel)]="tarefa.dtInicio " >
+    </label><br><br>
+
+    <label>Data Termino: 
+        <input type="date" name="dataTermino" size="30" [(ngModel)]="tarefa.dtTermino" >
+    </label><br><br>
+    
+    <label>Tarefa Concluida:
+        <input type="radio" name="tarefaConcluida" [(ngModel)]="tarefa.concluido" [value]="true">Sim
+        <input type="radio" name="tarefaConcluida" [(ngModel)]="tarefa.concluido" [value]="false">Não<br>
+    </label><br/><br>
+
+    <label>Pessoa:
+        <select id="pessoa" [(ngModel)]="pessoa" name="pessoa">
+            <option *ngFor="let pessoa of pessoas | async" 
+            [ngValue]="pessoa">
+            {{pessoa.nome}}
+            </option>
+        </select>
+
+    </label>
+    
+    <button type="submit">Salvar</button>
+    
+    </form>
+    
