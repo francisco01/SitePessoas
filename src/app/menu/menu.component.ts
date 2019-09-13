@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TokenStorageService } from '../home/auth/token-storage.service';
 
 @Component({
   selector: 'app-blog-menu',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  isLogged = false;
+  constructor(private token: TokenStorageService) { }
 
   ngOnInit() {
+    if (this.token.getToken()){
+      this.isLogged = true;
+    }
+  }
+  logout() {
+    this.token.signOut();
+    window.location.reload();
   }
 
 }

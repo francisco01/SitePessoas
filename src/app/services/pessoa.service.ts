@@ -33,8 +33,8 @@ export class PessoaService {
         excluirPessoa(codigo:number): Observable<any>{
             return this.http.delete(this.baseUrlService + codigo);
         }
-        getPessoa(codigo:number): Observable<any>{
-            return this.http.get(this.baseUrlService + codigo);
+        getPessoa(nome:string): Observable<any>{
+            return this.http.get(this.baseUrlService + nome);
         }
         atualizarPessoa(pessoa: Pessoa): Observable<any>{
             return this.http.put(this.baseUrlService, pessoa);

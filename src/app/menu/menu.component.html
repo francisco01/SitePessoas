@@ -1,6 +1,10 @@
-<ul>
-    <li><a [routerLink]="['/home']">Home</a></li>
-    <li><a [routerLink]="['/cadastro-pessoa']">Cadastro</a></li>
-    <li><a [routerLink]="['/consulta-pessoa']">Consulta</a></li>
-    <li><a [routerLink]="['/cadastro-tarefa']">Tarefa</a></li>
+<ul >
+    <li class="btn"><a [routerLink]="['/home']" >Home</a></li>
+    <li *ngIf="!isLogged"class="btn"><a [routerLink]="['/auth/login']">Login</a></li>
+    <!--<li *ngIf="isLogged"><a [routerLink]="['/cadastro-pessoa']">Cadastro</a></li>-->
+    <li *ngIf="isLogged" class="btn"><a [routerLink]="['/cadastro-tarefa']">Cadastrar Tarefa</a></li>
+    <li *ngIf="isLogged" class="btn"><a [routerLink]="['/consulta-tarefa/codigo']">Consulta</a></li>
+    <li *ngIf="isLogged" type="button" class="btn" style="margin-left: 890px; margin-top: 0px;"(click)="logout()">
+        <a [routerLink]="['']">Sair</a></li>
+
 </ul>

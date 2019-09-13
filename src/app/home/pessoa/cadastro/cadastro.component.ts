@@ -26,7 +26,7 @@ export class CadastroComponent implements OnInit {
       }
       else {
         this.titulo = 'Editar Cadastro de Pessoa';
-        this.pessoaService.getPessoa(Number(parametro['codigo']))
+        this.pessoaService.getPessoa(String(parametro['nome']))
         .subscribe(res => {
           this.pessoa = res;
         });

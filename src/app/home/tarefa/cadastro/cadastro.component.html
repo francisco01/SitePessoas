@@ -29,13 +29,7 @@
     </label><br/><br>
 
     <label>Pessoa:
-        <select id="pessoa" [(ngModel)]="pessoa" name="pessoa">
-            <option *ngFor="let pessoa of pessoas | async" 
-            [ngValue]="pessoa">
-            {{pessoa.nome}}
-            </option>
-        </select>
-
+            {{ pessoa.userName }}
     </label>
     
     <button type="submit">Salvar</button>

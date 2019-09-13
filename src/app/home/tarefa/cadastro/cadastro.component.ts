@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Response } from '../../../services/respnse';
 import { Pessoa } from 'src/app/services/pessoa';
 import { PessoaService } from 'src/app/services/pessoa.service';
+import { Token } from '../../../services/token';
 import { Observable } from 'rxjs';
 import { DatePipe } from '@angular/common';
 
@@ -17,16 +18,23 @@ export class CadastroComponentT implements OnInit {
 
   private titulo: string;
   private tarefa: Tarefa = new Tarefa();
-  private pessoas: Observable<Pessoa[]>;
+  //private pessoas: Observable<Pessoa[]>;
   private pessoa: Pessoa;
+  private userName: string;
 
   constructor(private tarefaService: TarefaService,
     private pessoaService: PessoaService,
     private router: Router,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    private token: Token) { }
 
   ngOnInit() {
-    this.pessoas = this.pessoaService.getPessoas();
+    this.userName = this.token.getUserName();
+    this.pessoaService.getPessoa(this.userName)
+    .subscribe(res => {
+      this.pessoa = res;
+      console.log('pessoa', this.pessoa);
+    });
     this.activatedRoute.params.subscribe(parametro => {
       if (parametro['codigo'] === undefined) {
         this.titulo = 'Novo Cadastro de Tarefa'
@@ -49,6 +57,7 @@ export class CadastroComponentT implements OnInit {
           const res: Response = <Response>response;
           if (res.codigo === 1) {
             alert(res.mensagem);
+            this.router.navigate(['/consulta-tarefa/codigo']);
           } else {
             alert(res.mensagem);
           }
@@ -62,7 +71,7 @@ export class CadastroComponentT implements OnInit {
         const res: Response = <Response>response;
         if (res.codigo == 1){
           alert(res.mensagem);
-          this.router.navigate(['/consulta-pessoa']);
+          this.router.navigate(['/consulta-tarefa/codigo']);
         }else{
           alert(res.mensagem);
         }
